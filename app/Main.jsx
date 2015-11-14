@@ -25,7 +25,8 @@ export default class Main extends React.Component {
     }
 
     close(){
-        // location.href
+        // location.href = 'pebblejs://close#'+encodeURIComponent(JSON.stringify(this.state.stops))
+        console.log(JSON.stringify(this.state.stops,2))
     }
 
     render(){
