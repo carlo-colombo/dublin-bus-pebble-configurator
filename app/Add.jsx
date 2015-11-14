@@ -1,11 +1,13 @@
 import React from 'react'; 
 
+import RaisedButton from 'material-ui/lib/raised-button'
+
 export default class Add extends React.Component {
     constructor(props){
         super(props)
     }
 
     render(){
-        return <button onClick={this.props.onClick}>add</button>
+        return <RaisedButton label="Default" secondary={true} onClick={this.props.onClick} />
     }
 }

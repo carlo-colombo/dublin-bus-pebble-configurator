@@ -3,6 +3,8 @@ import React from 'react'
 import StopLine from './StopLine.jsx'
 import Add from './Add.jsx'
 
+import RaisedButton from 'material-ui/lib/raised-button'
+
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
@@ -22,6 +24,10 @@ export default class Main extends React.Component {
         this.setState({stops})
     }
 
+    close(){
+        // location.href
+    }
+
     render(){
         let handleChange = this.handleChange.bind(this)
         return(
@@ -33,7 +39,8 @@ export default class Main extends React.Component {
                   onChange={handleChange} />
             })}
             </div>
-            <Add onClick={this.addStop.bind(this)} />
+            <RaisedButton label="Add bus stop" secondary={true} onClick={this.addStop.bind(this)} />
+            <RaisedButton label="Send config"  primary={true} onClick={this.close.bind(this)} />
             </div>
         )
     }
