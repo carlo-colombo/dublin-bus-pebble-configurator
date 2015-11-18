@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "deploy": "npm build && gh-pages --dist dist"
+    "deploy": "npm run build && gh-pages --dist dist"
   },
   "author": "",
   "license": "ISC",
