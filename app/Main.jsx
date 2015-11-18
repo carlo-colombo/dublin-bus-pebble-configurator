@@ -11,8 +11,9 @@ import RaisedButton from 'material-ui/lib/raised-button'
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
+        let options = localStorage.stops || '[]'
         this.state = {
-            stops : [{line: 44},{line: 4400},{line: 1221}, {line: 111},{line:678}]
+            stops : JSON.parse(decodeURIComponent(options))
         }
     }
 
@@ -30,8 +31,10 @@ export default class Main extends React.Component {
     }
 
     close(){
-        // location.href = 'pebblejs://close#'+encodeURIComponent(JSON.stringify(this.state.stops))
-        console.log(JSON.stringify(this.state.stops,2))
+        let stops = this.state.stops.filter(stop => !stop.__deleted)
+        let options = encodeURIComponent(JSON.stringify(stops))
+        localStorage.stops = options
+        location.href = 'pebblejs://close#' + options
     }
 
     destroy(index){
