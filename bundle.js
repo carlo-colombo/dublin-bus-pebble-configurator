@@ -19704,8 +19704,9 @@
 	
 	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
 	
+	        var options = localStorage.stops || '[]';
 	        _this2.state = {
-	            stops: [{ line: 44 }, { line: 4400 }, { line: 1221 }, { line: 111 }, { line: 678 }]
+	            stops: JSON.parse(decodeURIComponent(options))
 	        };
 	        return _this2;
 	    }
@@ -19728,8 +19729,12 @@
 	    }, {
 	        key: 'close',
 	        value: function close() {
-	            // location.href = 'pebblejs://close#'+encodeURIComponent(JSON.stringify(this.state.stops))
-	            console.log(JSON.stringify(this.state.stops, 2));
+	            var stops = this.state.stops.filter(function (stop) {
+	                return !stop.__deleted;
+	            });
+	            var options = encodeURIComponent(JSON.stringify(stops));
+	            localStorage.stops = options;
+	            location.href = 'pebblejs://close#' + options;
 	        }
 	    }, {
 	        key: 'destroy',
