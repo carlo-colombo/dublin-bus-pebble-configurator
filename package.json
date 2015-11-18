@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "serve": "webpack-dev-server --port 9021 --content-base dist --host 0.0.0.0",
+    "server": "npm run serve",
     "build": "webpack",
     "deploy": "npm run build && gh-pages --dist dist"
   },
