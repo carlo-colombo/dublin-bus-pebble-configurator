@@ -21,18 +21,19 @@ export default class StopLine extends React.Component {
         let {name, value} = event.target
         this.setState({
             [name]: value
-        },()=> this.props.onChange(this.state, this.props.index))
+        },()=> this.props.onChange(name, value, this.props.index))
     }
 
     render() {
         let {name, stop, line} = this.state,
             handleChange = this.handleChange.bind(this),
+            {onDestroy} = this.props,
             style= {marginBottom: 5  };
         
         return (
           <Card style={style}>
             <CardText>
-              <IconButton tooltip="Delete" touch={true}>
+              <IconButton tooltip="Delete" touch={true} onClick={onDestroy}>
                 <ActionDelete/>
               </IconButton>
               <IconButton tooltip="Move down" touch={true}>
