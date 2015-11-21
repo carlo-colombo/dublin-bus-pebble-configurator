@@ -27,7 +27,7 @@ export default class StopLine extends React.Component {
     render() {
         let {name, stop, line} = this.state,
             handleChange = this.handleChange.bind(this),
-            {onDestroy} = this.props,
+            {onDestroy, onUp, onDown, first, last} = this.props,
             style= {marginBottom: 5  };
         
         return (
@@ -36,10 +36,10 @@ export default class StopLine extends React.Component {
               <IconButton tooltip="Delete" touch={true} onClick={onDestroy}>
                 <ActionDelete/>
               </IconButton>
-              <IconButton tooltip="Move down" touch={true}>
+              <IconButton tooltip="Move down" touch={true} onClick={onDown} disabled={last}>
                 <ArrowDown/>
               </IconButton>
-              <IconButton tooltip="Move up" touch={true}>
+              <IconButton tooltip="Move up" touch={true} onClick={onUp} disabled={first}>
                 <ArrowUp/>
               </IconButton>
               <br/>
