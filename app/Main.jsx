@@ -40,7 +40,7 @@ export default class Main extends React.Component {
     }
 
     destroy(index){
-        this.setState(update(this.state, {
+        confirm('Do you want to delete?') && this.setState(update(this.state, {
             stops: {
                 [index]: {
                     $merge: {__deleted: true}
